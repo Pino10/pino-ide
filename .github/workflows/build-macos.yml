@@ -3,6 +3,7 @@ name: Build macOS app
 on:
   workflow_dispatch:
   push:
+    branches: [main]
     tags: ['v*']
 
 permissions:
@@ -17,7 +18,7 @@ jobs:
           - os: macos-latest
             target: aarch64-apple-darwin
             label: apple-silicon
-          - os: macos-13
+          - os: macos-15-intel
             target: x86_64-apple-darwin
             label: intel
     runs-on: ${{ matrix.os }}
