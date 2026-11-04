@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pino IDE</title>
+  </head>
+  <body>
+    <div id="app">
+      <header id="titlebar" data-tauri-drag-region>
+        <div class="tb-left" data-tauri-drag-region>
+          <button class="icon-btn" id="btn-sidebar" title="Toggle sidebar (⌘B)" aria-label="Toggle sidebar" aria-pressed="true"></button>
+        </div>
+        <div class="tb-center" data-tauri-drag-region>
+          <button class="search-pill" id="btn-search" title="Find a file (⌘P)" aria-label="Find a file"></button>
+          <span class="win-title" id="win-title" data-tauri-drag-region>Pino IDE</span>
+          <span class="win-dirty" id="win-dirty" title="Unsaved changes"></span>
+        </div>
+        <div class="tb-right" data-tauri-drag-region>
+          <button class="icon-btn" id="btn-settings" title="Settings (⌘,)" aria-label="Settings"></button>
+          <button class="icon-btn" id="btn-chat" title="Toggle chat (⌘J)" aria-label="Toggle chat" aria-pressed="true"></button>
+        </div>
+      </header>
+
+      <div id="body">
+        <aside id="sidebar" class="panel" aria-label="Explorer">
+          <div class="side-head" id="folder-head">
+            <span class="side-title" id="folder-name">Explorer</span>
+            <span class="grow"></span>
+            <button class="icon-btn sm" id="btn-newfile" title="New file" aria-label="New file"></button>
+            <button class="icon-btn sm" id="btn-newfolder" title="New folder" aria-label="New folder"></button>
+            <button class="icon-btn sm" id="btn-refresh" title="Refresh" aria-label="Refresh"></button>
+          </div>
+          <div id="tree" class="tree" role="tree" tabindex="0" aria-label="Files"></div>
+          <div class="side-empty">
+            <p>No folder open</p>
+            <button class="btn primary" id="open-folder-side">Open folder</button>
+          </div>
+        </aside>
+
+        <div class="resizer" id="rs-left" role="separator" aria-orientation="vertical" aria-label="Resize sidebar"></div>
+
+        <main id="main" class="panel">
+          <div id="tabs-wrap" class="hidden"><div id="tabs" role="tablist"></div></div>
+          <div id="crumbs" class="crumbs"></div>
+          <div id="editor" class="hidden"></div>
+          <div id="welcome"></div>
+        </main>
+
+        <div class="resizer" id="rs-right" role="separator" aria-orientation="vertical" aria-label="Resize chat"></div>
+
+        <aside id="chat" class="panel" aria-label="Chat"></aside>
+      </div>
+
+      <footer id="statusbar"></footer>
+    </div>
+    <div id="overlay-root"></div>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
