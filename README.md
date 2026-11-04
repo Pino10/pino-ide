@@ -36,11 +36,19 @@ Or let GitHub build it: push the repo, open **Actions → Build macOS app → Ru
 
 ### Opening an unsigned app
 
-Pino is not signed with an Apple Developer account, so macOS blocks it the first time. After dragging it to Applications, **right-click the app, choose Open, then Open again**. If macOS still refuses, run once:
+Pino is not signed with a paid Apple Developer account, so macOS quarantines it after download and may say **"Pino IDE is damaged and can't be opened"**. The app is fine. Drag it to Applications, then run this once in Terminal:
 
 ```bash
-xattr -dr com.apple.quarantine "/Applications/Pino IDE.app"
+xattr -cr "/Applications/Pino IDE.app"
 ```
+
+If macOS still refuses, sign it locally (free, no account) and try again:
+
+```bash
+codesign --force --deep --sign - "/Applications/Pino IDE.app"
+```
+
+If macOS instead says it is from an unidentified developer, go to **System Settings → Privacy & Security** and click **Open Anyway**.
 
 ## Connecting models
 

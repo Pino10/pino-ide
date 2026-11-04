@@ -40,7 +40,9 @@ jobs:
 
       - run: npm ci
 
-      - name: Build (unsigned)
+      - name: Build (ad-hoc signed, no Apple account needed)
+        env:
+          APPLE_SIGNING_IDENTITY: '-'
         run: npx tauri build --target ${{ matrix.target }} --bundles dmg,app
 
       - name: Collect DMG
